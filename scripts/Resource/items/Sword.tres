@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://beaf3vltu8e55"]
+
+[ext_resource type="Texture2D" uid="uid://c53mapihgt4gc" path="res://assets/atlas/swordAtlas.tres" id="1_8awla"]
+[ext_resource type="Script" uid="uid://de8h74o65u8ps" path="res://scripts/Resource/item_class.gd" id="2_ma7m4"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_ma7m4")
+name = "NiggaBalls"
+icon = ExtResource("1_8awla")
+size = Vector2i(100, 50)
+grids = "0,0/1,0"
+base_cooldown = 0.5
+fill_min_y = 0.35
+fill_max_y = 0.58
+effect_type = 2
+effect_value = 10
+metadata/_custom_type_script = "uid://de8h74o65u8ps"

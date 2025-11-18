@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu1fa7ke83coy"]
+
+[ext_resource type="Script" uid="uid://j1r47xuhlaro" path="res://scripts/item.gd" id="1_4gq7n"]
+[ext_resource type="Resource" uid="uid://beaf3vltu8e55" path="res://scripts/Resource/items/Sword.tres" id="2_s8enn"]
+[ext_resource type="Shader" uid="uid://s0ide3ibqoxp" path="res://shader/item.gdshader" id="3_6muww"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vljjh"]
+resource_local_to_scene = true
+shader = ExtResource("3_6muww")
+shader_parameter/progress = 1.0
+shader_parameter/fill_color = Color(0, 0, 0, 1)
+shader_parameter/fill_strength = 1.0
+shader_parameter/fill_min_y = 0.3210000152475
+shader_parameter/fill_max_y = 0.6050000287375
+
+[node name="Item" type="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("1_4gq7n")
+item = ExtResource("2_s8enn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_vljjh")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+offset_right = 50.0
+offset_bottom = 50.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

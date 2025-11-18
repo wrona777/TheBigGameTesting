@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://qxwc288xrw1t"]
+
+[ext_resource type="Texture2D" uid="uid://cmhd1jqwictuv" path="res://assets/itemAssets/appleItem.png" id="1_7yrx0"]
+
+[resource]
+atlas = ExtResource("1_7yrx0")
+region = Rect2(653, 307, 290, 290)

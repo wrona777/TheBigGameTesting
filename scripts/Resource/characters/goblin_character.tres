@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bglanxw3uryx3"]
+
+[ext_resource type="Script" uid="uid://dck8f3qtsu0l4" path="res://scripts/Resource/character_class.gd" id="1_kvraf"]
+[ext_resource type="Resource" uid="uid://beaf3vltu8e55" path="res://scripts/Resource/items/Sword.tres" id="2_kppa7"]
+
+[resource]
+script = ExtResource("1_kvraf")
+name = "Goblin geng"
+base_hp = 80
+item_array = [{
+"item_path": ExtResource("2_kppa7"),
+"rotation_deg": 3,
+"slot": 50
+}]
+metadata/_custom_type_script = "uid://dck8f3qtsu0l4"
