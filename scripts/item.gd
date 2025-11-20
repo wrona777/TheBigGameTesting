@@ -96,10 +96,10 @@ func _use_item_effect() -> void:
 			pass
 			
 		Item.EffectType.HEAL_SELF:
-			print("HEAL_SELF: +", item.effect_value)
+			a_owner.heal(item.effect_value)
 			
 		Item.EffectType.DAMAGE_ENEMY:
-			print("DAMAGE_ENEMY: -", item.effect_value)
+			a_target.take_damage(item.effect_value)
 			
 		Item.EffectType.APPLY_STATUS:
 			print("APPLY_STATUS:", item.effect_status_name)

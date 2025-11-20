@@ -8,6 +8,9 @@ class_name Inventory
 
 @export var interactive : bool = true
 
+var a_owner : Character
+var a_opponent : Character
+
 @onready var grid: GridContainer = $Grid
 
 var slot_array : Array  #array of all slots
@@ -31,6 +34,17 @@ func _process(_delta: float) -> void:
 		if grid.get_global_rect().has_point(get_global_mouse_position()):
 			if Input.is_action_just_pressed("LeftMouseClick"):
 				pick_up()
+
+func set_owner_and_target(_a_owner : Character,_a_opponent : Character) -> void:
+	a_owner = _a_owner
+	a_opponent = _a_opponent
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	for item in item_array:
+		item.a_owner = a_owner
+		item.a_target = a_opponent
+		print(a_owner)
 
 func _spawn_slots() -> void:
 	var num_of_slots = columns * rows
@@ -132,6 +146,7 @@ func clamp_item_to_slots_id(id : int, item : Item, degrees : int) -> void:
 	var new_item = item_scene.instantiate()
 	new_item.item = item
 	add_child(new_item)
+	item_array.push_back(new_item)
 	
 	var the_slot = slot_array[id]
 	new_item.grid_anchor = the_slot
@@ -144,3 +159,7 @@ func clamp_item_to_slots_id(id : int, item : Item, degrees : int) -> void:
 	for a_grid in new_item.item_grids:
 		var grid_to_check = id + a_grid[0] + a_grid[1] * columns
 		slot_array[grid_to_check].item_stored = new_item
+
+func stop_all_cooldowns() -> void:
+	for item in item_array:
+		item._stop_cooldown()

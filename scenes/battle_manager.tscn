@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://c6etohmhbxl4l"]
+[gd_scene load_steps=4 format=3 uid="uid://c6etohmhbxl4l"]
+
+[ext_resource type="PackedScene" uid="uid://yrnh45xisira" path="res://scenes/character.tscn" id="1_3jpuh"]
+[ext_resource type="Script" uid="uid://cgfnsdhtiovcv" path="res://scripts/battle_manager.gd" id="1_8w533"]
+[ext_resource type="Resource" uid="uid://bglanxw3uryx3" path="res://scripts/Resource/characters/goblin_character.tres" id="2_05opc"]
 
 [node name="BattleManager" type="Control"]
 layout_mode = 3
@@ -7,3 +11,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8w533")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Player" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_3jpuh")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Opponnet" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_3jpuh")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+data = ExtResource("2_05opc")

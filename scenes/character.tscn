@@ -4,8 +4,19 @@
 [ext_resource type="Resource" uid="uid://bmihscbwnrbcx" path="res://scripts/Resource/characters/player_character.tres" id="2_lrhn5"]
 [ext_resource type="PackedScene" uid="uid://ipkma6wxjnk4" path="res://scenes/inventory.tscn" id="2_rkhd4"]
 
-[node name="Character" type="Node"]
+[node name="Character" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
 script = ExtResource("1_agfs1")
 data = ExtResource("2_lrhn5")
 
 [node name="Inventory" parent="." instance=ExtResource("2_rkhd4")]
+layout_mode = 1
+
+[node name="Hp" type="Label" parent="."]
+layout_mode = 1
+offset_top = 527.0
+offset_right = 63.0
+offset_bottom = 550.0
+text = "Zdrowie"
