@@ -90,19 +90,9 @@ func _on_cooldown_timer_timeout() -> void:
 func _use_item_effect() -> void:
 	if item == null:
 		return
-		
-	match item.effect_type:
-		Item.EffectType.NONE:
-			pass
-			
-		Item.EffectType.HEAL_SELF:
-			a_owner.heal(item.effect_value)
-			
-		Item.EffectType.DAMAGE_ENEMY:
-			a_target.take_damage(item.effect_value)
-			
-		Item.EffectType.APPLY_STATUS:
-			print("APPLY_STATUS:", item.effect_status_name)
+	
+	for effect in item.effects:
+		effect.execute(a_owner, a_target)
 
 func _bar_progress():
 	if shader_mat == null or cooldown_timer.is_stopped():

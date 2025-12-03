@@ -1,7 +1,13 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://beaf3vltu8e55"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://beaf3vltu8e55"]
 
 [ext_resource type="Texture2D" uid="uid://c53mapihgt4gc" path="res://assets/atlas/swordAtlas.tres" id="1_8awla"]
+[ext_resource type="Script" uid="uid://ddp4wfkcq0et0" path="res://itemEffects/itemEffects.gd" id="1_87tpf"]
 [ext_resource type="Script" uid="uid://de8h74o65u8ps" path="res://scripts/Resource/item_class.gd" id="2_ma7m4"]
+[ext_resource type="Script" uid="uid://cephfh5ue7st4" path="res://itemEffects/EffectAttack.gd" id="2_y4x7r"]
+
+[sub_resource type="Resource" id="Resource_3proh"]
+script = ExtResource("2_y4x7r")
+metadata/_custom_type_script = "uid://cephfh5ue7st4"
 
 [resource]
 resource_local_to_scene = true
@@ -10,9 +16,8 @@ name = "NiggaBalls"
 icon = ExtResource("1_8awla")
 size = Vector2i(100, 50)
 grids = "0,0/1,0"
-base_cooldown = 0.5
+base_cooldown = 2.0
 fill_min_y = 0.35
 fill_max_y = 0.58
-effect_type = 2
-effect_value = 10
+effects = Array[ExtResource("1_87tpf")]([SubResource("Resource_3proh")])
 metadata/_custom_type_script = "uid://de8h74o65u8ps"

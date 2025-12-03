@@ -19,13 +19,4 @@ var additional_offset_array = { #additional offsets for some items, 0, 90, 180, 
 @export var fill_strength : float = 0.5
 
 # ---- EFFECT CONFIG ----
-@export var effect_type: EffectType = EffectType.NONE
-@export var effect_value: int = 0
-@export var effect_status_name: StringName = &""
-
-enum EffectType {
-	NONE,
-	HEAL_SELF,
-	DAMAGE_ENEMY,
-	APPLY_STATUS,
-}
+@export var effects: Array[ItemEffect] = []
