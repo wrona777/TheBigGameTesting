@@ -16,7 +16,6 @@ var a_target = null
 func _ready() -> void:
 	if item:
 		item_setter()
-		_start_cooldown()
 
 func _process(delta: float) -> void:
 	if selected:

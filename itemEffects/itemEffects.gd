@@ -2,5 +2,5 @@ extends Resource
 
 class_name ItemEffect
 
-func execute(owner_node, target_node) -> void:
+func execute(_owner_node, _target_node) -> void:
 	pass

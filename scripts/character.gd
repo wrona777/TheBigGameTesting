@@ -4,6 +4,7 @@ class_name Character
 signal died
 
 @export var data: CharacterData
+signal ready_to_fight
 
 var max_hp: int
 var hp: int
@@ -11,17 +12,26 @@ var hp: int
 @onready var inventory = $Inventory
 @onready var hp_label = $Hp
 
+var _cached_opponent : Character = null
+
 func _ready() -> void:
 	if data:
 		if inventory:
-			inventory.load_items_from_data(data.item_array)
+			inventory.items_loaded.connect(_on_inventory_loaded)
+			inventory.initialize_items(data.item_array)
+			
 			max_hp = data.base_hp
 			hp = max_hp
 			set_hp()
 
 func set_opponent(opponent) -> void:
-	if inventory:
-		inventory.set_owner_and_target(self,opponent)
+	_cached_opponent = opponent
+
+func _on_inventory_loaded() -> void:
+	if inventory and _cached_opponent:
+		inventory.initialize_combat_logic(self, _cached_opponent)
+		
+	ready_to_fight.emit()
 
 func take_damage(amount: int) -> void:
 	hp = max(hp - amount, 0)

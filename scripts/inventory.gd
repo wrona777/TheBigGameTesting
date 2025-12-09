@@ -8,6 +8,8 @@ class_name Inventory
 
 @export var interactive : bool = true
 
+signal items_loaded
+
 var a_owner : Character
 var a_opponent : Character
 
@@ -19,8 +21,6 @@ var can_place = false #self explainatory
 
 func _ready() -> void:
 	grid.columns = columns
-	_spawn_slots()
-	await get_tree().process_frame
 
 func _process(_delta: float) -> void:
 	if App.item_held and interactive:
@@ -35,16 +35,24 @@ func _process(_delta: float) -> void:
 			if Input.is_action_just_pressed("LeftMouseClick"):
 				pick_up()
 
-func set_owner_and_target(_a_owner : Character,_a_opponent : Character) -> void:
-	a_owner = _a_owner
-	a_opponent = _a_opponent
+func initialize_items(data_array : Array):
+	if slot_array.is_empty():
+		_spawn_slots()
+		
 	await get_tree().process_frame
-	await get_tree().process_frame
+	
+	for item_info in data_array:
+		clamp_item_to_slots_id(item_info["slot"], item_info["item_path"], item_info["rotation_deg"])
+	
+	items_loaded.emit()
+
+func initialize_combat_logic(_owner: Character, _opponent: Character) -> void:
+	a_owner = _owner
+	a_opponent = _opponent
 	
 	for item in item_array:
 		item.a_owner = a_owner
 		item.a_target = a_opponent
-		print(a_owner)
 
 func _spawn_slots() -> void:
 	var num_of_slots = columns * rows
@@ -56,11 +64,6 @@ func _spawn_slots() -> void:
 		grid.add_child(new_slot)
 		new_slot.slot_entered.connect(_on_slot_mouse_entered)
 		new_slot.slot_exited.connect(_on_slot_mouse_exited)
-
-func load_items_from_data(data : Array) -> void:
-	await get_tree().process_frame
-	for item in data:
-		clamp_item_to_slots_id(item["slot"], item["item_path"], item["rotation_deg"])
 
 func _on_slot_mouse_entered(a_slot) -> void:
 	if not interactive: return
@@ -163,3 +166,7 @@ func clamp_item_to_slots_id(id : int, item : Item, degrees : int) -> void:
 func stop_all_cooldowns() -> void:
 	for item in item_array:
 		item._stop_cooldown()
+
+func start_all_cooldowns() -> void:
+	for item in item_array:
+		item._start_cooldown()
