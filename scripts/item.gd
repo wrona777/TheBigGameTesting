@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 
 #Item/Grid Stuff
 func item_setter() -> void:
-	item_icon.size = Vector2(item.size)
+	item_icon.size = Vector2(item.size) * App.cell_size
 	item_icon.texture = item.icon
 	set_item_grids()
 	shader_mat = item_icon.material as ShaderMaterial
@@ -61,7 +61,7 @@ func rotate():
 func _snap_item_to_inventory(destination : Vector2) -> void:
 	var tween = get_tree().create_tween()
 	
-	var offset : Vector2 = item.additional_offset_array[item.item_offset_type][int(rotation_degrees / 90)]
+	var offset : Vector2 = item.additional_offset_array[item.item_offset_type][int(rotation_degrees / 90)] * App.cell_size
 	
 	destination = destination + offset
 	tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)

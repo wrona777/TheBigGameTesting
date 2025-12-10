@@ -16,6 +16,8 @@ func _ready() -> void:
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hover_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	
+	custom_minimum_size = Vector2(App.cell_size, App.cell_size)
 
 func _process(_delta: float) -> void:
 	if get_global_rect().has_point(get_global_mouse_position()):
