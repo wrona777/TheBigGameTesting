@@ -13,6 +13,8 @@ var grid_anchor = null
 var a_owner = null
 var a_target = null
 
+var current_charges: int = 0
+
 func _ready() -> void:
 	if item:
 		item_setter()
@@ -21,13 +23,19 @@ func _process(delta: float) -> void:
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
 	
-	_bar_progress()
+	if item.trigger == null:
+		_bar_progress()
+	else:
+		if cooldown_timer.is_stopped() and (current_charges > 0 or item.max_charges == 0):
+			_check_trigger()
 
 
 #Item/Grid Stuff
 func item_setter() -> void:
 	item_icon.size = Vector2(item.size) * App.cell_size
 	item_icon.texture = item.icon
+	current_charges = item.max_charges
+	
 	set_item_grids()
 	shader_mat = item_icon.material as ShaderMaterial
 	
@@ -70,7 +78,7 @@ func _snap_item_to_inventory(destination : Vector2) -> void:
 
 #THE PROGRESS/TIMER SECTION
 func _start_cooldown() -> void:
-	if item == null or shader_mat == null:
+	if item == null or shader_mat == null or item.trigger != null:
 		return
 
 	cooldown_timer.wait_time = item.base_cooldown
@@ -84,6 +92,8 @@ func _stop_cooldown() -> void:
 	shader_mat.set_shader_parameter("progress", 0.0)
 
 func _on_cooldown_timer_timeout() -> void:
+	if item.trigger != null:
+		return
 	_use_item_effect()
 
 func _use_item_effect() -> void:
@@ -102,3 +112,16 @@ func _bar_progress():
 	var progress = 1.0 - (left / total)
 	
 	shader_mat.set_shader_parameter("progress", clampf(progress, 0.0, 1.0))
+
+func _check_trigger() -> void:
+	if item.trigger and a_owner:
+		if item.trigger.is_condition_met(a_owner, a_target):
+			_use_item_effect()
+			
+			cooldown_timer.start() 
+			
+			if item.max_charges > 0:
+				current_charges -= 1
+				
+				if current_charges <= 0:
+					modulate = Color(0.5, 0.5, 0.5)

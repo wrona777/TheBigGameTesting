@@ -10,6 +10,7 @@ var max_hp: int
 var hp: int
 
 @onready var inventory = $Inventory
+@onready var status_manager = $StatusManager
 @onready var hp_label = $Hp
 
 var _cached_opponent : Character = null
@@ -45,3 +46,9 @@ func heal(amount : int) -> void:
 
 func set_hp() -> void:
 	hp_label.text = "Hp: " + str(hp) + "/" + str(max_hp)
+
+func stop_battle_logic() -> void:
+	if inventory:
+		inventory.stop_all_cooldowns()
+	if status_manager:
+		status_manager.clear_all_statuses()

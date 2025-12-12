@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://yrnh45xisira"]
+[gd_scene load_steps=5 format=3 uid="uid://yrnh45xisira"]
 
 [ext_resource type="Script" uid="uid://d2khxo125e13y" path="res://scripts/character.gd" id="1_agfs1"]
 [ext_resource type="Resource" uid="uid://bmihscbwnrbcx" path="res://scripts/Resource/characters/player_character.tres" id="2_lrhn5"]
 [ext_resource type="PackedScene" uid="uid://ipkma6wxjnk4" path="res://scenes/inventory.tscn" id="2_rkhd4"]
+[ext_resource type="PackedScene" uid="uid://bn5vekmcga5mh" path="res://scenes/status_manager.tscn" id="4_my7n2"]
 
 [node name="Character" type="Control"]
 layout_mode = 3
@@ -20,3 +21,5 @@ offset_top = 527.0
 offset_right = 63.0
 offset_bottom = 550.0
 text = "Zdrowie"
+
+[node name="StatusManager" parent="." instance=ExtResource("4_my7n2")]

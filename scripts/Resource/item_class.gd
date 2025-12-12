@@ -8,6 +8,7 @@ class_name Item
 @export var grids : String
 
 @export var item_offset_type = "classic_item"
+
 var additional_offset_array = { #additional offsets for some items, 0, 90, 180, 270 respectively
 	"classic_item" : [Vector2(0,0), Vector2(1,0), Vector2(1,1), Vector2(0,1)],
 	"L" : [Vector2(-1,-1), Vector2(2,-1), Vector2(2,2), Vector2(-1,2)]}
@@ -20,3 +21,10 @@ var additional_offset_array = { #additional offsets for some items, 0, 90, 180, 
 
 # ---- EFFECT CONFIG ----
 @export var effects: Array[ItemEffect] = []
+
+# ---- TRIGGER EFFECT CONFIG ----
+@export_group("Usage Logic")
+@export var trigger: ItemTrigger 
+
+@export var max_charges: int = 0 # 0 = nieskończoność (np. broń), >0 = potka
+@export var consume_on_use: bool = false # Czy znika po zużyciu wszystkich ładunków?

@@ -38,5 +38,5 @@ func _on_opponent_died() -> void:
 	_stop_all_items()
 
 func _stop_all_items() -> void:
-	player.inventory.stop_all_cooldowns()
-	opponent.inventory.stop_all_cooldowns()
+	player.stop_battle_logic()
+	opponent.stop_battle_logic()

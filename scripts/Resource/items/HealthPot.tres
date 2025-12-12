@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://cophohrcgqh4x"]
+
+[ext_resource type="Script" uid="uid://ddp4wfkcq0et0" path="res://itemEffects/itemEffects.gd" id="1_8irjo"]
+[ext_resource type="Script" uid="uid://dxnxx8rxs4o83" path="res://itemEffects/EffectHeal.gd" id="2_8irjo"]
+[ext_resource type="Texture2D" uid="uid://cciawr418aiog" path="res://assets/atlas/healthPotAtlas.tres" id="2_dus70"]
+[ext_resource type="Script" uid="uid://ce8fjpqn5vcss" path="res://itemEffects/triggers/TriggerHpTreshHold.gd" id="4_1v8fn"]
+[ext_resource type="Script" uid="uid://de8h74o65u8ps" path="res://scripts/Resource/item_class.gd" id="5_vae8u"]
+
+[sub_resource type="Resource" id="Resource_3ri5p"]
+script = ExtResource("2_8irjo")
+amount = 30
+metadata/_custom_type_script = "uid://dxnxx8rxs4o83"
+
+[sub_resource type="Resource" id="Resource_8irjo"]
+script = ExtResource("4_1v8fn")
+metadata/_custom_type_script = "uid://ce8fjpqn5vcss"
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("5_vae8u")
+name = "NiggaBalls"
+icon = ExtResource("2_dus70")
+size = Vector2i(2, 1)
+grids = "0,0/1,0"
+base_cooldown = 2.0
+fill_min_y = 0.35
+fill_max_y = 0.58
+effects = Array[ExtResource("1_8irjo")]([SubResource("Resource_3ri5p")])
+trigger = SubResource("Resource_8irjo")
+max_charges = 1
+consume_on_use = true
+metadata/_custom_type_script = "uid://de8h74o65u8ps"
