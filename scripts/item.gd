@@ -3,6 +3,7 @@ extends Control
 
 @onready var item_icon = $TextureRect
 @onready var cooldown_timer = $CooldownTimer
+@onready var charges_label = $ChargesLabel
 
 var shader_mat: ShaderMaterial
 
@@ -37,6 +38,7 @@ func item_setter() -> void:
 	current_charges = item.max_charges
 	
 	set_item_grids()
+	_update_charges_visual()
 	shader_mat = item_icon.material as ShaderMaterial
 	
 	if shader_mat:
@@ -122,6 +124,21 @@ func _check_trigger() -> void:
 			
 			if item.max_charges > 0:
 				current_charges -= 1
-				
-				if current_charges <= 0:
-					modulate = Color(0.5, 0.5, 0.5)
+				_update_charges_visual()
+
+func _update_charges_visual() -> void:
+	if charges_label == null: return
+	
+	if item.max_charges <= 0:
+		charges_label.visible = false
+		return
+	
+	charges_label.visible = true
+	charges_label.text = str(current_charges)
+	
+	if current_charges <= 0:
+		charges_label.visible = false 
+		if item.icon_empty:
+			item_icon.texture = item.icon_empty
+		else:
+			modulate = Color(0.5, 0.5, 0.5)

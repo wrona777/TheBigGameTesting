@@ -4,6 +4,7 @@ class_name Item
 #Base stats
 @export var name : String = "Item"
 @export var icon : Texture2D
+@export var icon_empty: Texture2D
 @export var size : Vector2i = Vector2i(1,1)
 @export var grids : String
 
@@ -24,7 +25,7 @@ var additional_offset_array = { #additional offsets for some items, 0, 90, 180, 
 
 # ---- TRIGGER EFFECT CONFIG ----
 @export_group("Usage Logic")
-@export var trigger: ItemTrigger 
+@export var trigger: ItemTrigger #IF true ma triggera
 
 @export var max_charges: int = 0 # 0 = nieskończoność (np. broń), >0 = potka
 @export var consume_on_use: bool = false # Czy znika po zużyciu wszystkich ładunków?
