@@ -10,6 +10,7 @@ var shader_mat: ShaderMaterial
 var selected = false
 var item_grids := []
 var grid_anchor = null
+var markers: Array = []
 
 var a_owner = null
 var a_target = null
@@ -114,6 +115,22 @@ func _bar_progress():
 	var progress = 1.0 - (left / total)
 	
 	shader_mat.set_shader_parameter("progress", clampf(progress, 0.0, 1.0))
+
+#Inne
+
+func _spawn_synergy_markers() -> void:
+	if item.synergy_input_tags.is_empty():
+		return
+
+	for pos in item.synergy_points:
+		var marker = preload("res://scenes/synergy_marker.tscn").instantiate()
+		add_child(marker)
+		
+		@warning_ignore("integer_division")
+		marker.position = pos * App.cell_size + Vector2(App.cell_size/2, App.cell_size/2)
+		marker.required_tags = item.synergy_input_tags
+		
+		markers.append(marker)
 
 func _check_trigger() -> void:
 	if item.trigger and a_owner:
