@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://bmihscbwnrbcx"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bmihscbwnrbcx"]
 
 [ext_resource type="Script" uid="uid://dck8f3qtsu0l4" path="res://scripts/Resource/character_class.gd" id="1_kpc1h"]
 [ext_resource type="Resource" uid="uid://beaf3vltu8e55" path="res://scripts/Resource/items/Sword.tres" id="1_vyd7h"]
 [ext_resource type="Resource" uid="uid://lcs1gryoh5i3" path="res://scripts/Resource/items/Apple.tres" id="2_3mgvn"]
+[ext_resource type="Resource" uid="uid://lfgrgwg5jgv" path="res://scripts/Resource/items/Clover.tres" id="3_6r3ak"]
 
 [resource]
 script = ExtResource("1_kpc1h")
@@ -20,5 +21,9 @@ item_array = [{
 "item_path": ExtResource("2_3mgvn"),
 "rotation_deg": 1,
 "slot": 20
+}, {
+"item_path": ExtResource("3_6r3ak"),
+"rotation_deg": 1,
+"slot": 24
 }]
 metadata/_custom_type_script = "uid://dck8f3qtsu0l4"

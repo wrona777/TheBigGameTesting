@@ -65,6 +65,23 @@ func _spawn_slots() -> void:
 		new_slot.slot_entered.connect(_on_slot_mouse_entered)
 		new_slot.slot_exited.connect(_on_slot_mouse_exited)
 
+func get_item_at_global_pos(global_pos: Vector2) -> Control:
+	var local_pos = grid.get_global_transform().affine_inverse() * global_pos
+
+	var col = int(local_pos.x / App.cell_size)
+	var row = int(local_pos.y / App.cell_size)
+	
+	if col < 0 or col >= columns or row < 0 or row >= rows:
+		return null
+	
+	var slot_index = row * columns + col
+	
+	if slot_index < slot_array.size():
+		var slot = slot_array[slot_index]
+		return slot.item_stored
+		
+	return null
+
 func _on_slot_mouse_entered(a_slot) -> void:
 	if not interactive: return
 	App.current_slot = a_slot
@@ -150,6 +167,7 @@ func clamp_item_to_slots_id(id : int, item : Item, degrees : int) -> void:
 	new_item.item = item
 	add_child(new_item)
 	item_array.push_back(new_item)
+	new_item.inventory_ref = self
 	
 	var the_slot = slot_array[id]
 	new_item.grid_anchor = the_slot

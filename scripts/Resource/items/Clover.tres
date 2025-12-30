@@ -10,4 +10,5 @@ name = "Clover"
 icon = ExtResource("2_6eu6h")
 grids = "0,0"
 synergy_points = Array[Vector2]([Vector2(1, 0)])
+synergy_input_tags = Array[String](["weapon"])
 metadata/_custom_type_script = "uid://de8h74o65u8ps"

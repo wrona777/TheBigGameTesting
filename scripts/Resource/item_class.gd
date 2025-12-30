@@ -10,7 +10,7 @@ class_name Item
 
 @export_group("Synergy")
 @export var my_tags: Array[String] = ["item"]
-@export var synergy_points: Array[Vector2]
+@export var synergy_points: Array[Vector2] #Jeżeli puste nie szuka
 @export var synergy_input_tags: Array[String] = []
 
 @export_group("Offset")

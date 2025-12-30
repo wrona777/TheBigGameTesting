@@ -10,10 +10,11 @@ var shader_mat: ShaderMaterial
 var selected = false
 var item_grids := []
 var grid_anchor = null
-var markers: Array = []
+var synergy_markers: Array = []
 
 var a_owner = null
 var a_target = null
+var inventory_ref: Inventory = null
 
 var current_charges: int = 0
 
@@ -30,7 +31,8 @@ func _process(delta: float) -> void:
 	else:
 		if cooldown_timer.is_stopped() and (current_charges > 0 or item.max_charges == 0):
 			_check_trigger()
-
+	
+	_check_synergies()
 
 #Item/Grid Stuff
 func item_setter() -> void:
@@ -38,10 +40,11 @@ func item_setter() -> void:
 	item_icon.texture = item.icon
 	current_charges = item.max_charges
 	
+	_spawn_synergy_markers()
 	set_item_grids()
 	_update_charges_visual()
-	shader_mat = item_icon.material as ShaderMaterial
 	
+	shader_mat = item_icon.material as ShaderMaterial
 	if shader_mat:
 		shader_mat.set_shader_parameter("progress", 0.0)
 		shader_mat.set_shader_parameter("fill_min_y", item.fill_min_y)
@@ -116,7 +119,7 @@ func _bar_progress():
 	
 	shader_mat.set_shader_parameter("progress", clampf(progress, 0.0, 1.0))
 
-#Inne
+#Markery
 
 func _spawn_synergy_markers() -> void:
 	if item.synergy_input_tags.is_empty():
@@ -130,7 +133,25 @@ func _spawn_synergy_markers() -> void:
 		marker.position = pos * App.cell_size + Vector2(App.cell_size/2, App.cell_size/2)
 		marker.required_tags = item.synergy_input_tags
 		
-		markers.append(marker)
+		synergy_markers.append(marker)
+
+func _check_synergies() -> void:
+	if inventory_ref == null: return
+	
+	for marker in synergy_markers:
+		var marker_global_pos = marker.icon.global_position 
+		
+		var found_node = inventory_ref.get_item_at_global_pos(marker_global_pos)
+		
+		var match_found = false
+		
+		if found_node and found_node != self:
+			if marker.check_resource(found_node.item):
+				match_found = true
+				# TU MOŻESZ DODAĆ LOGIKĘ BUFFOWANIA (np. zliczanie aktywnych synergii)
+		marker.set_visual_state(match_found)
+
+#Inne
 
 func _check_trigger() -> void:
 	if item.trigger and a_owner:

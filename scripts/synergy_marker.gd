@@ -3,18 +3,23 @@ extends Control
 @onready var icon = $Texture
 
 var required_tags: Array[String] = []
+var is_active: bool = false
 
-func set_active(is_active: bool) -> void:
+func _ready() -> void:
+	set_visual_state(false)
+
+func set_visual_state(active: bool) -> void:
+	is_active = active
 	if is_active:
-		icon.texture = "res://assets/ballFullAtlas.tres"
+		icon.texture = preload("res://assets/ballFullAtlas.tres")
 	else:
-		icon.texture = "res://assets/ballEmptyAtlas.tres"
+		icon.texture = preload("res://assets/ballEmptyAtlas.tres")
 
-func check_item(neighbor_item_resource: Item) -> bool:
-	if neighbor_item_resource == null: return false
+func check_resource(neighbor_res: Item) -> bool:
+	if neighbor_res == null: return false
 	
+	# Jeśli sąsiad ma CHOCIAŻ JEDEN pasujący tag -> Sukces
 	for tag in required_tags:
-		if neighbor_item_resource.my_tags.has(tag):
+		if neighbor_res.my_tags.has(tag):
 			return true
-			
 	return false

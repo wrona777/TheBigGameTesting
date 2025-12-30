@@ -22,6 +22,7 @@ name = "NiggaBalls"
 icon = ExtResource("1_8awla")
 size = Vector2i(2, 1)
 grids = "0,0/1,0"
+my_tags = Array[String](["weapon"])
 base_cooldown = 2.0
 fill_min_y = 0.35
 fill_max_y = 0.58
