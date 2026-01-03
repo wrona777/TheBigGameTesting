@@ -7,6 +7,7 @@ var is_active: bool = false
 
 func _ready() -> void:
 	set_visual_state(false)
+	icon.size = Vector2(App.cell_size,App.cell_size)
 
 func set_visual_state(active: bool) -> void:
 	is_active = active

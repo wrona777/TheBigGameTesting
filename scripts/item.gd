@@ -130,7 +130,7 @@ func _spawn_synergy_markers() -> void:
 		add_child(marker)
 		
 		@warning_ignore("integer_division")
-		marker.position = pos * App.cell_size + Vector2(App.cell_size/2, App.cell_size/2)
+		marker.position = pos * App.cell_size
 		marker.required_tags = item.synergy_input_tags
 		
 		synergy_markers.append(marker)

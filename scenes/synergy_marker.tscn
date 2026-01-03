@@ -15,3 +15,5 @@ script = ExtResource("1_70frw")
 [node name="Texture" type="TextureRect" parent="."]
 layout_mode = 1
 texture = ExtResource("2_bbc5l")
+expand_mode = 1
+stretch_mode = 5
