@@ -9,6 +9,16 @@ func _ready() -> void:
 	set_visual_state(false)
 	icon.size = Vector2(App.cell_size,App.cell_size)
 
+func _process(_delta: float) -> void:
+	queue_redraw()
+
+func _draw() -> void:
+	# Rysujemy celownik w punkcie (0,0) lokalnie (czyli tam gdzie global_position)
+	draw_circle(Vector2.ZERO, 3.0, Color.BLUE) 
+	
+	# Rysujemy celownik na ŚRODKU prostokąta (to jest to, czego chcemy)
+	draw_circle(size / 2.0, 3.0, Color.RED)
+
 func set_visual_state(active: bool) -> void:
 	is_active = active
 	if is_active:

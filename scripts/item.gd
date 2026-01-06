@@ -25,13 +25,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
-	
 	if item.trigger == null:
 		_bar_progress()
 	else:
 		if cooldown_timer.is_stopped() and (current_charges > 0 or item.max_charges == 0):
 			_check_trigger()
-	
 	_check_synergies()
 
 #Item/Grid Stuff
@@ -80,6 +78,7 @@ func _snap_item_to_inventory(destination : Vector2) -> void:
 	destination = destination + offset
 	tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)
 	selected = false
+	_check_synergies()
 
 
 #THE PROGRESS/TIMER SECTION
@@ -139,16 +138,24 @@ func _check_synergies() -> void:
 	if inventory_ref == null: return
 	
 	for marker in synergy_markers:
-		var marker_global_pos = marker.icon.global_position 
-		
-		var found_node = inventory_ref.get_item_at_global_pos(marker_global_pos)
-		
 		var match_found = false
 		
-		if found_node and found_node != self:
-			if marker.check_resource(found_node.item):
-				match_found = true
-				# TU MOŻESZ DODAĆ LOGIKĘ BUFFOWANIA (np. zliczanie aktywnych synergii)
+		var probe_pos = marker.get_global_position()
+		var centered_pos = probe_pos + (marker.size / 2)
+		#problem z tymi pozycjami coś tu nie gra przedebuguj
+		var found_slot = inventory_ref.get_slot_node_at_global_pos(centered_pos)
+		
+		# 3. Jeśli trafiliśmy w jakiś slot...
+		if found_slot:
+			var item_in_slot = found_slot.item_stored
+			
+			if item_in_slot:
+				
+				if item_in_slot != self and item_in_slot.item != self.item:
+					
+					if marker.check_resource(item_in_slot.item):
+						match_found = true
+						
 		marker.set_visual_state(match_found)
 
 #Inne
