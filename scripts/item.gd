@@ -136,16 +136,16 @@ func _spawn_synergy_markers() -> void:
 
 func _check_synergies() -> void:
 	if inventory_ref == null: return
+	var visual_fix_offset = _get_current_visual_offset()
 	
 	for marker in synergy_markers:
 		var match_found = false
 		
 		var probe_pos = marker.get_global_position()
-		var centered_pos = probe_pos + (marker.size / 2)
-		#problem z tymi pozycjami coś tu nie gra przedebuguj
-		var found_slot = inventory_ref.get_slot_node_at_global_pos(centered_pos)
+		var centered_pos = probe_pos + (marker.size / 2) #Centrujemy
+		var final_pos = centered_pos - visual_fix_offset #Odejmujemy offset
+		var found_slot = inventory_ref.get_slot_node_at_global_pos(final_pos)
 		
-		# 3. Jeśli trafiliśmy w jakiś slot...
 		if found_slot:
 			var item_in_slot = found_slot.item_stored
 			
@@ -157,6 +157,15 @@ func _check_synergies() -> void:
 						match_found = true
 						
 		marker.set_visual_state(match_found)
+
+func _get_current_visual_offset() -> Vector2:
+	var rot_index = int(rotation_degrees / 90) % 4
+	if rot_index < 0: rot_index += 4 
+	
+	if item.additional_offset_array.has(item.item_offset_type):
+		var offset_vector = item.additional_offset_array[item.item_offset_type][rot_index]
+		return offset_vector * App.cell_size
+	return Vector2.ZERO
 
 #Inne
 
