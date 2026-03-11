@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://lfgrgwg5jgv"]
+
+[ext_resource type="Script" uid="uid://ddp4wfkcq0et0" path="res://resources/itemEffects/effects/itemEffects.gd" id="1_iegqs"]
+[ext_resource type="Texture2D" uid="uid://xicc7yd8vqeg" path="res://assets/atlases/itemAtlases/other/cloverAtlas.tres" id="2_6eu6h"]
+[ext_resource type="Script" uid="uid://de8h74o65u8ps" path="res://resources/baseClasses/item_class.gd" id="2_7ftjy"]
+
+[resource]
+script = ExtResource("2_7ftjy")
+name = "Clover"
+icon = ExtResource("2_6eu6h")
+grids = "0,0"
+synergy_points = Array[Vector2]([Vector2(1, 0)])
+synergy_input_tags = Array[String](["weapon"])
+metadata/_custom_type_script = "uid://de8h74o65u8ps"

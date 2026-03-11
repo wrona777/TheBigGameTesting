@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bu1fa7ke83coy"]
 
-[ext_resource type="Script" uid="uid://j1r47xuhlaro" path="res://scripts/item.gd" id="1_4gq7n"]
-[ext_resource type="Resource" uid="uid://beaf3vltu8e55" path="res://scripts/Resource/items/Sword.tres" id="2_s8enn"]
-[ext_resource type="Shader" uid="uid://s0ide3ibqoxp" path="res://shader/item.gdshader" id="3_6muww"]
+[ext_resource type="Script" uid="uid://j1r47xuhlaro" path="res://scripts/sceneScripts/item.gd" id="1_4gq7n"]
+[ext_resource type="Resource" uid="uid://beaf3vltu8e55" path="res://resources/items/Sword.tres" id="2_s8enn"]
+[ext_resource type="Shader" uid="uid://s0ide3ibqoxp" path="res://scripts/shaders/item.gdshader" id="3_6muww"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vljjh"]
 resource_local_to_scene = true

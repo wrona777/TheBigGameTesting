@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bmihscbwnrbcx"]
+
+[ext_resource type="Script" uid="uid://dck8f3qtsu0l4" path="res://resources/baseClasses/character_class.gd" id="1_kpc1h"]
+[ext_resource type="Resource" uid="uid://beaf3vltu8e55" path="res://resources/items/Sword.tres" id="1_vyd7h"]
+[ext_resource type="Resource" uid="uid://lcs1gryoh5i3" path="res://resources/items/Apple.tres" id="2_3mgvn"]
+[ext_resource type="Resource" uid="uid://lfgrgwg5jgv" path="res://resources/items/Clover.tres" id="3_6r3ak"]
+
+[resource]
+script = ExtResource("1_kpc1h")
+name = "Player"
+base_hp = 110
+item_array = [{
+"item_path": ExtResource("1_vyd7h"),
+"rotation_deg": 2,
+"slot": 30
+}, {
+"item_path": ExtResource("1_vyd7h"),
+"rotation_deg": 3,
+"slot": 50
+}, {
+"item_path": ExtResource("2_3mgvn"),
+"rotation_deg": 1,
+"slot": 20
+}, {
+"item_path": ExtResource("3_6r3ak"),
+"rotation_deg": 1,
+"slot": 24
+}]
+metadata/_custom_type_script = "uid://dck8f3qtsu0l4"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlh8okpsemiaq"]
 
-[ext_resource type="Script" uid="uid://bpl1knexi10lx" path="res://scripts/synergy_marker.gd" id="1_70frw"]
-[ext_resource type="Texture2D" uid="uid://c6ugsgtyymnil" path="res://assets/ballEmptyAtlas.tres" id="2_bbc5l"]
+[ext_resource type="Script" uid="uid://bpl1knexi10lx" path="res://scripts/sceneScripts/synergy_marker.gd" id="1_70frw"]
+[ext_resource type="Texture2D" uid="uid://c6ugsgtyymnil" path="res://assets/otherAssets/ballEmptyAtlas.tres" id="2_bbc5l"]
 
 [node name="SynergyMarker" type="Control"]
 layout_mode = 3

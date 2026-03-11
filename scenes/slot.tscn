@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://do13oiuyturk0"]
 
-[ext_resource type="Script" uid="uid://b58m22vv4dxdl" path="res://scripts/slot.gd" id="1_4v6ba"]
-[ext_resource type="Texture2D" uid="uid://d2jn17tqg3pow" path="res://assets/atlas/slotAtlas.tres" id="2_ic0fu"]
+[ext_resource type="Script" uid="uid://b58m22vv4dxdl" path="res://scripts/sceneScripts/slot.gd" id="1_4v6ba"]
+[ext_resource type="Texture2D" uid="uid://d2jn17tqg3pow" path="res://assets/atlases/otherAtlases/slotAtlas.tres" id="2_ic0fu"]
 
 [node name="Slot" type="Panel"]
 custom_minimum_size = Vector2(50, 50)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6etohmhbxl4l"]
 
 [ext_resource type="PackedScene" uid="uid://yrnh45xisira" path="res://scenes/character.tscn" id="1_3jpuh"]
-[ext_resource type="Script" uid="uid://cgfnsdhtiovcv" path="res://scripts/battle_manager.gd" id="1_8w533"]
-[ext_resource type="Resource" uid="uid://bglanxw3uryx3" path="res://scripts/Resource/characters/goblin_character.tres" id="2_05opc"]
+[ext_resource type="Script" uid="uid://cgfnsdhtiovcv" path="res://scripts/sceneScripts/battle_manager.gd" id="1_8w533"]
+[ext_resource type="Resource" uid="uid://bglanxw3uryx3" path="res://resources/characters/goblin_character.tres" id="2_05opc"]
 
 [node name="BattleManager" type="Control"]
 layout_mode = 3
