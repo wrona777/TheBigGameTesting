@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://br5a85pvar2gm"]
+
+[ext_resource type="Script" uid="uid://cupmnga7wgujn" path="res://scripts/sceneScripts/battle_logs.gd" id="1_hv1kd"]
+
+[node name="battle_logs" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hv1kd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(500, 170)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -170.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "Przykładowy tekst"
+scroll_following = true
+horizontal_alignment = 1

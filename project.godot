@@ -18,6 +18,7 @@ config/icon="res://assets/otherAssets/icon.svg"
 [autoload]
 
 App="*res://scripts/Autoloads/App.gd"
+BattleLoggerAutoLoad="*res://scripts/Autoloads/BattleLoggerAutoLoad.gd"
 
 [display]
 

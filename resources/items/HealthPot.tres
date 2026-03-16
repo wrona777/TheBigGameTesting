@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://ce8fjpqn5vcss"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("5_sfscj")
-name = "NiggaBalls"
+name = "HealthPot"
 icon = ExtResource("3_3ri5p")
 icon_empty = ExtResource("3_8irjo")
 size = Vector2i(2, 1)

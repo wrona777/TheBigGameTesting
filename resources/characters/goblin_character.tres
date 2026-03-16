@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_fm3ql")
-name = "Goblin geng"
+character_name = "GoblinGenk"
 base_hp = 80
 item_array = [{
 "item_path": ExtResource("2_kppa7"),

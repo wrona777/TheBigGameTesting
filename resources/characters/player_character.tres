@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("1_kpc1h")
-name = "Player"
+character_name = "Gracz"
 base_hp = 110
 item_array = [{
 "item_path": ExtResource("1_vyd7h"),

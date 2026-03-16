@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://bsj0ywtwqnsgf"
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_ma7m4")
-name = "NiggaBalls"
+name = "Sword"
 icon = ExtResource("1_8awla")
 size = Vector2i(2, 1)
 grids = "0,0/1,0"

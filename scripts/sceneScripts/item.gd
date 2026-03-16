@@ -106,7 +106,7 @@ func _use_item_effect() -> void:
 		return
 	
 	for effect in item.effects:
-		effect.execute(a_owner, a_target)
+		effect.execute(a_owner, a_target, item.name)
 
 func _bar_progress():
 	if shader_mat == null or cooldown_timer.is_stopped():

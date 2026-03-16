@@ -30,12 +30,14 @@ func start_battle() -> void:
 	opponent.inventory.start_all_cooldowns()
 
 func _on_player_died() -> void:
-	print("Przegrałeś")
 	_stop_all_items()
+	print("Przegrałeś")
+	BattleLoggerAutoLoad.add_log("[color=red] przegrałeś [/color]")
 
 func _on_opponent_died() -> void:
-	print("Wygrałeś")
 	_stop_all_items()
+	print("Wygrałeś")
+	BattleLoggerAutoLoad.add_log("[color=green] wygrałeś [/color]")
 
 func _stop_all_items() -> void:
 	player.stop_battle_logic()

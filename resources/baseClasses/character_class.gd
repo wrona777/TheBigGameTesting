@@ -1,7 +1,7 @@
 extends Resource
 class_name CharacterData
 
-@export var name : String = "Null"
+@export var character_name : String = "Null"
 
 #stats
 @export var base_hp : int = 100

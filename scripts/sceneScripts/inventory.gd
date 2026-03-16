@@ -68,7 +68,6 @@ func _spawn_slots() -> void:
 func get_slot_node_at_global_pos(global_pos: Vector2) -> Control:
 	for slot in slot_array:
 		if slot.get_global_rect().has_point(global_pos):
-			print(slot)
 			return slot
 	return null
 

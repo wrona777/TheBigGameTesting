@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://dxnxx8rxs4o83"
 
 [resource]
 script = ExtResource("2_tbxmc")
-name = "NiggaBalls"
+name = "Apple"
 icon = ExtResource("1_5vxdw")
 grids = "0,0"
 base_cooldown = 3.0
