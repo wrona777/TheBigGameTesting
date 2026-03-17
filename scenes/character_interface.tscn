@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh5ccwgnqbed5"]
+
+[ext_resource type="Script" uid="uid://catq7hx0uocwi" path="res://scripts/sceneScripts/character_interface.gd" id="1_fwned"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwned"]
+bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igjkc"]
+bg_color = Color(0.9612513, 0.9726271, 0.9173891, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwned"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vaf3h"]
+bg_color = Color(0.40997085, 0.6348298, 0.17349076, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CharacterInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fwned")
+
+[node name="DamageBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fwned")
+theme_override_styles/fill = SubResource("StyleBoxFlat_igjkc")
+show_percentage = false
+
+[node name="HpBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_fwned")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vaf3h")
+show_percentage = false
