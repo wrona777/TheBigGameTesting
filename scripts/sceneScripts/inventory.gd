@@ -177,3 +177,35 @@ func stop_all_cooldowns() -> void:
 func start_all_cooldowns() -> void:
 	for item in item_array:
 		item._start_cooldown()
+
+func process_defensive_items(incoming_damage: int) -> int:
+	var final_damage = incoming_damage
+	
+	var processed_items = [] 
+	
+	for slot in slot_array:
+		if slot.item_stored != null:
+			var item_node = slot.item_stored
+			
+			if item_node in processed_items:
+				continue
+				
+			processed_items.append(item_node)
+			
+			if item_node.item.trigger is TriggerOnHit:
+				if item_node.cooldown_timer.is_stopped() and (item_node.current_charges > 0 or item_node.item.max_charges == 0):
+					var was_used = false
+					
+					for effect in item_node.item.effects:
+						if effect is EffectBlock:
+							var dmg_after_block = effect.execute_block(final_damage)
+							if dmg_after_block < final_damage:
+								final_damage = dmg_after_block
+								was_used = true
+					
+					if was_used:
+						item_node._check_trigger()
+						
+			if final_damage <= 0:
+				break 
+	return final_damage

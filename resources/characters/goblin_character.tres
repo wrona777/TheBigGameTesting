@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://bglanxw3uryx3"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bglanxw3uryx3"]
 
 [ext_resource type="Resource" uid="uid://beaf3vltu8e55" path="res://resources/items/Sword.tres" id="2_kppa7"]
 [ext_resource type="Resource" uid="uid://cophohrcgqh4x" path="res://resources/items/HealthPot.tres" id="2_y43gu"]
+[ext_resource type="Resource" uid="uid://mquok2sdkwvk" path="res://resources/items/Shield.tres" id="3_2ym52"]
 [ext_resource type="Script" uid="uid://dck8f3qtsu0l4" path="res://resources/baseClasses/character_class.gd" id="3_fm3ql"]
 
 [resource]
@@ -15,6 +16,10 @@ item_array = [{
 }, {
 "item_path": ExtResource("2_y43gu"),
 "rotation_deg": 3,
-"slot": 20
+"slot": 24
+}, {
+"item_path": ExtResource("3_2ym52"),
+"rotation_deg": 0,
+"slot": 6
 }]
 metadata/_custom_type_script = "uid://dck8f3qtsu0l4"

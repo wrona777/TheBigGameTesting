@@ -32,7 +32,7 @@ func _handle_status_logic(_name: String, data: Dictionary, delta: float) -> void
 			
 			if data["tick_timer"] >= 1.0:
 				var damage = data["stacks"]
-				character.take_damage(damage)
+				character.take_damage(damage, "bleed")
 				
 				
 				data["tick_timer"] -= 1.0

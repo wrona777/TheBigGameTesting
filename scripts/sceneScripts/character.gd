@@ -34,9 +34,14 @@ func _on_inventory_loaded() -> void:
 		
 	ready_to_fight.emit()
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, damage_type: String = "direct") -> void:
+	
+	if inventory != null and damage_type == "direct":
+		amount = inventory.process_defensive_items(amount)
+		
 	hp = max(hp - amount, 0)
 	set_hp()
+	
 	if hp <= 0:
 		emit_signal("died")
 
