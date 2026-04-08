@@ -100,6 +100,7 @@ func _on_cooldown_timer_timeout() -> void:
 	if item.trigger != null:
 		return
 	_use_item_effect()
+	play_use_animation()
 
 func _use_item_effect() -> void:
 	if item == null:
@@ -173,6 +174,7 @@ func _check_trigger() -> void:
 	if item.trigger and a_owner:
 		if item.trigger.is_condition_met(a_owner, a_target):
 			_use_item_effect()
+			play_use_animation()
 			
 			cooldown_timer.start() 
 			
@@ -196,3 +198,10 @@ func _update_charges_visual() -> void:
 			item_icon.texture = item.icon_empty
 		else:
 			modulate = Color(0.5, 0.5, 0.5)
+
+func play_use_animation() -> void:
+	var tween = create_tween()
+	
+	tween.tween_property(self, "scale", Vector2(1.25, 1.25), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)

@@ -205,6 +205,7 @@ func process_defensive_items(incoming_damage: int) -> int:
 					
 					if was_used:
 						item_node._check_trigger()
+						item_node.play_use_animation()
 						
 			if final_damage <= 0:
 				break 
