@@ -8,6 +8,7 @@ signal ready_to_fight
 
 var max_hp: int
 var hp: int
+var is_dead: bool = false
 
 @onready var inventory = $Inventory
 @onready var status_manager = $StatusManager
@@ -35,6 +36,8 @@ func _on_inventory_loaded() -> void:
 	ready_to_fight.emit()
 
 func take_damage(amount: int, damage_type: String = "direct") -> void:
+	if is_dead:
+		return
 	
 	if inventory != null and damage_type == "direct":
 		amount = inventory.process_defensive_items(amount)
@@ -43,6 +46,7 @@ func take_damage(amount: int, damage_type: String = "direct") -> void:
 	set_hp()
 	
 	if hp <= 0:
+		is_dead = true
 		emit_signal("died")
 
 func heal(amount : int) -> void:
