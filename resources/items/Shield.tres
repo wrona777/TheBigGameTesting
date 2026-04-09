@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_k0b8e"]
 script = ExtResource("2_krnnj")
-block_chance = 20
+block_chance = 40
 block_amount = 4
 metadata/_custom_type_script = "uid://bjpx3i63xuuk2"
 

@@ -12,7 +12,6 @@ var is_dead: bool = false
 
 @onready var inventory = $Inventory
 @onready var status_manager = $StatusManager
-@onready var hp_label = $Hp
 
 var _cached_opponent : Character = null
 
@@ -24,7 +23,6 @@ func _ready() -> void:
 			
 			max_hp = data.base_hp
 			hp = max_hp
-			set_hp()
 
 func set_opponent(opponent) -> void:
 	_cached_opponent = opponent
@@ -43,7 +41,6 @@ func take_damage(amount: int, damage_type: String = "direct") -> void:
 		amount = inventory.process_defensive_items(amount)
 		
 	hp = max(hp - amount, 0)
-	set_hp()
 	
 	if hp <= 0:
 		is_dead = true
@@ -51,10 +48,6 @@ func take_damage(amount: int, damage_type: String = "direct") -> void:
 
 func heal(amount : int) -> void:
 	hp = min(hp + amount, max_hp)
-	set_hp()
-
-func set_hp() -> void:
-	hp_label.text = "Hp: " + str(hp) + "/" + str(max_hp)
 
 func stop_battle_logic() -> void:
 	if inventory:
